@@ -25,11 +25,16 @@ public class Application {
      * In order to make sure multicast registry works, need to specify '-Djava.net.preferIPv4Stack=true' before
      * launch the application
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        System.setProperty("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/dubbo-consumer.xml");
         context.start();
         DemoService demoService = context.getBean("demoService", DemoService.class);
-        String hello = demoService.sayHello("world");
-        System.out.println("result: " + hello);
+
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            String hello = demoService.sayHello("world");
+            System.out.println("result -- " + i + " : " + hello);
+            Thread.sleep(2000);
+        }
     }
 }

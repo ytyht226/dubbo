@@ -29,6 +29,17 @@
         <skip_maven_deploy>true</skip_maven_deploy>
     </properties>
     <dependencies>
+        <!-- added -->
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-registry-zookeeper</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-configcenter-zookeeper</artifactId>
+        </dependency>
+        <!-- -->
+
         <dependency>
             <groupId>org.apache.dubbo</groupId>
             <artifactId>dubbo-demo-interface</artifactId>
