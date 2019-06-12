@@ -29,7 +29,7 @@
 
     <!-- use dubbo protocol to export service on port 20880 -->
     <dubbo:protocol name="dubbo"/>
-    <dubbo:provider proxy="jdk"/>
+    <dubbo:provider proxy="jdk" loadbalance="roundrobin"/>
 
     <!-- service implementation, as same as regular local bean -->
     <bean id="demoService" class="org.apache.dubbo.demo.provider.DemoServiceImpl"/>
