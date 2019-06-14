@@ -24,4 +24,8 @@ public interface DemoService {
         return null;
     }
 
+    default String methodOne(String name) {
+        return null;
+    }
+
 }
