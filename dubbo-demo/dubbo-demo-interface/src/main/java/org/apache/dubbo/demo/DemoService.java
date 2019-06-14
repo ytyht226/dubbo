@@ -20,4 +20,8 @@ public interface DemoService {
 
     String sayHello(String name);
 
+    default String sayHello(String id, String name) {
+        return null;
+    }
+
 }

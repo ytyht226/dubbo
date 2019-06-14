@@ -32,8 +32,12 @@ public class Application {
         DemoService demoService = context.getBean("demoService", DemoService.class);
 
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
-            String hello = demoService.sayHello("world");
-            System.out.println("result -- " + i + " : " + hello);
+            try {
+                String hello = demoService.sayHello("world");
+                System.out.println("result -- " + i + " : " + hello);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             Thread.sleep(2000);
         }
     }
