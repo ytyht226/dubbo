@@ -16,6 +16,7 @@
  */
 package org.apache.dubbo.demo.consumer;
 
+import org.apache.dubbo.demo.DemoOneService;
 import org.apache.dubbo.demo.DemoService;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -30,11 +31,15 @@ public class Application {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring/dubbo-consumer.xml");
         context.start();
         DemoService demoService = context.getBean("demoService", DemoService.class);
+        DemoOneService demoOneService = context.getBean("demoOneService", DemoOneService.class);
 
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
             try {
                 String hello = demoService.sayHello("world");
                 System.out.println("result -- " + i + " : " + hello);
+
+                String demoOne1 = demoOneService.demoOne1("demoOne1");
+                System.out.println("[demoOne1]result -- " + i + " : " + demoOne1);
             } catch (Exception e) {
                 e.printStackTrace();
             }
